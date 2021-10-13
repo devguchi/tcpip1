@@ -1,5 +1,5 @@
+use log::error;
 use std::env;
-use log::{error};
 
 fn main() {
     env::set_var("RUST_LOG", "debug");
@@ -9,25 +9,32 @@ fn main() {
         error!("please input 3 args.");
         std::process::exit(1);
     }
-    let protocol:&str = &args[1];
-    let role:&str = &args[2];
-    let address:&str = &args[3];
-    println!("[protocol] {} [role] {} [address] {}", protocol, role, address);
+    let protocol: &str = &args[1];
+    let role: &str = &args[2];
+    let address: &str = &args[3];
+    println!(
+        "[protocol] {} [role] {} [address] {}",
+        protocol, role, address
+    );
     match protocol {
         "tcp" => match role {
-            "server" => {},
-            "client" => {},
-            _ => {missing_role();},
+            "server" => {}
+            "client" => {}
+            _ => {
+                missing_role();
+            }
         },
         "udp" => match role {
-            "server" => {},
-            "client" => {},
-            _ => {missing_role();},
+            "server" => {}
+            "client" => {}
+            _ => {
+                missing_role();
+            }
         },
         _ => {
             error!("args error.");
             std::process::exit(1);
-        },
+        }
     }
 }
 
